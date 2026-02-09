@@ -1,0 +1,450 @@
+/* Ultimate Love Journey - Style.css */
+
+/* Base styles */
+:root {
+    --primary-pink: #ff6b9d;
+    --secondary-pink: #ff8fa3;
+    --dark-pink: #d81b60;
+    --light-pink: #ffcdd2;
+    --gradient-start: linear-gradient(135deg, #ff6b9d, #ff8fa3);
+    --gradient-end: linear-gradient(135deg, #d81b60, #ff6b9d);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--gradient-start);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Background hearts animation */
+.hearts-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.heart {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.5rem;
+    animation: float 6s ease-in-out infinite;
+    user-select: none;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Gradient backgrounds */
+.bg-pink-gradient {
+    background: var(--gradient-start);
+    border: 2px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Card styles */
+.card {
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
+}
+
+.card-body {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-radius: 18px !important;
+}
+
+/* Button animations */
+.hover-bounce {
+    transition: all 0.3s ease;
+}
+
+.hover-bounce:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.btn {
+    transition: all 0.3s ease;
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
+
+/* Form controls */
+.form-control {
+    background: rgba(255, 255, 255, 0.2) !important;
+    border: 2px solid rgba(255, 255, 255, 0.3) !important;
+    color: white !important;
+}
+
+.form-control::placeholder {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.form-check-input {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    border: 2px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+.form-check-input:checked {
+    background-color: var(--dark-pink) !important;
+    border-color: var(--dark-pink) !important;
+}
+
+/* Progress bars */
+.progress {
+    background: rgba(255, 255, 255, 0.2) !important;
+    border-radius: 10px !important;
+}
+
+.progress-bar {
+    border-radius: 10px !important;
+}
+
+/* Scanner UI */
+.scanner-line {
+    width: 100%;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.scanning-progress {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-pink), var(--secondary-pink));
+    transition: width 0.5s ease;
+    position: relative;
+}
+
+.scanning-progress::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    animation: shine 2s infinite;
+}
+
+@keyframes shine {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* Result card */
+.result-card {
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    animation: fadeInScale 0.5s ease;
+    background: rgba(255, 255, 255, 0.2) !important;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    display: block;
+    color: white;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Shake animation for errors */
+.shake {
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+}
+
+/* Confetti trigger animation */
+.confetti-trigger {
+    animation: confettiEffect 2s ease-in-out;
+}
+
+@keyframes confettiEffect {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* Animation classes */
+.animate-fade-in {
+    animation: fadeInUp 1s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Level content transitions */
+.level-content {
+    transition: all 0.5s ease;
+}
+
+.level-content.fade-out {
+    opacity: 0;
+    transform: translateX(-50px);
+}
+
+.level-content.fade-in {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Question cards */
+.question-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Loyalty score display */
+.loyalty-score-display {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Prediction cards */
+.prediction-cards .card {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    transition: transform 0.3s ease;
+}
+
+.prediction-cards .card:hover {
+    transform: translateY(-5px);
+}
+
+/* Final result styling */
+.final-result {
+    background: rgba(255, 255, 255, 0.1);
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    padding: 2rem;
+}
+
+/* Audio controls */
+.audio-controls {
+    z-index: 1000;
+}
+
+.audio-controls .btn {
+    background: rgba(255, 255, 255, 0.2) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    color: white !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .display-4 {
+        font-size: 2rem;
+    }
+    
+    .card-body {
+        padding: 1.5rem !important;
+    }
+    
+    .btn-lg {
+        padding: 0.75rem 2rem !important;
+        font-size: 1rem;
+    }
+    
+    .form-control-lg {
+        padding: 1rem !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .display-4 {
+        font-size: 1.5rem;
+    }
+    
+    .card-body {
+        padding: 1rem !important;
+    }
+    
+    .btn-lg {
+        padding: 0.5rem 1.5rem !important;
+        font-size: 0.9rem;
+    }
+}
+
+/* Accessibility */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-pink);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--dark-pink);
+}
+
+/* Hide elements initially */
+.d-none {
+    display: none !important;
+}
+
+/* Opacity utilities */
+.opacity-75 {
+    opacity: 0.75;
+}
+
+/* Text colors */
+.text-warning {
+    color: #ffeb3b !important;
+}
+
+.text-light {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Border utilities */
+.border-0 {
+    border: 0 !important;
+}
+
+/* Position utilities */
+.position-relative {
+    position: relative;
+}
+
+.position-absolute {
+    position: absolute;
+}
+
+.position-fixed {
+    position: fixed;
+}
+
+/* Flex utilities */
+.align-items-center {
+    align-items: center;
+}
+
+.justify-content-center {
+    justify-content: center;
+}
+
+/* Height utilities */
+.vh-100 {
+    height: 100vh;
+}
+
+/* Width utilities */
+.w-100 {
+    width: 100%;
+}
+
+/* Margin utilities */
+.m-3 {
+    margin: 1rem;
+}
+
+.m-4 {
+    margin: 1.5rem;
+}
+
+.m-5 {
+    margin: 3rem;
+}
+
+.mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mb-2 {
+    margin-bottom: 0.5rem;
+}
+
+.mb-3 {
+    margin-bottom: 1rem;
+}
+
+.mb-4 {
+    margin-bottom: 1.5rem;
+}
+
+.mb-5 {
+    margin-bottom: 3rem;
+}
+
+.mt-4 {
+    margin-top: 1.5rem;
+}
+
+.mt-5 {
+    margin-top: 3rem;
+}

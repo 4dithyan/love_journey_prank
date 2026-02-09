@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Love Journey ❤️</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Floating Hearts Background -->
+    <div class="hearts-container" id="heartsContainer"></div>
+
+    <!-- Main Content -->
+    <div class="container-fluid vh-100 d-flex align-items-center justify-content-center p-3">
+        <div class="row w-100">
+            <div class="col-lg-6 col-md-8 col-sm-10 mx-auto">
+                <!-- Landing Page -->
+                <div id="landingPage" class="card shadow-lg rounded-4 border-0 bg-pink-gradient text-white">
+                    <div class="card-body p-5 text-center">
+                        <h1 class="display-4 fw-bold mb-4 animate-fade-in">
+                            <i class="fas fa-heart me-2"></i>Ultimate Love Journey ❤️<i class="fas fa-heart ms-2"></i>
+                        </h1>
+                        <p class="lead mb-4">Discover your romantic destiny with our advanced AI-powered love analyzer!</p>
+                        
+                        <div class="mb-4">
+                            <input type="text" id="userNameInput" class="form-control form-control-lg text-center rounded-pill px-4 py-3" placeholder="Enter your name..." maxlength="20">
+                        </div>
+                        
+                        <button id="startJourneyBtn" class="btn btn-light btn-lg rounded-pill px-5 py-3 fw-bold hover-bounce">
+                            Start Journey 🚀
+                        </button>
+                        
+                        <div class="mt-4">
+                            <small class="text-light opacity-75">Powered by Cupid's Advanced Algorithms</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Scan Screen -->
+                <div id="aiScanScreen" class="card shadow-lg rounded-4 border-0 bg-pink-gradient text-white d-none">
+                    <div class="card-body p-5 text-center">
+                        <h2 class="fw-bold mb-4">AI Love Scanner Active</h2>
+                        
+                        <div class="progress mb-4" style="height: 10px;">
+                            <div id="scanProgress" class="progress-bar bg-warning" role="progressbar" style="width: 0%"></div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <p class="lead mb-0" id="scanStatusText">Initializing scan...</p>
+                        </div>
+                        
+                        <div class="spinner-border text-light" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Level Screens -->
+                <div id="levelScreens" class="d-none">
+                    <!-- Progress Bar -->
+                    <div class="progress mb-3" style="height: 8px;">
+                        <div id="levelProgressBar" class="progress-bar bg-danger" role="progressbar" style="width: 0%"></div>
+                    </div>
+                    
+                    <div class="card shadow-lg rounded-4 border-0 bg-pink-gradient text-white">
+                        <div class="card-body p-4 text-center">
+                            <div class="level-indicator mb-3">
+                                <span class="badge bg-light text-dark fs-6 px-3 py-2">Level <span id="currentLevel">1</span>/4</span>
+                            </div>
+                            
+                            <!-- Level 1: Crush Detector -->
+                            <div id="level1" class="level-content">
+                                <h3 class="fw-bold mb-4"><i class="fas fa-search-location me-2"></i>Crush Detector</h3>
+                                <p class="mb-4">Our AI is scanning social media to find your biggest admirer...</p>
+                                
+                                <div class="scanner-ui mb-4">
+                                    <div class="scanner-line position-relative">
+                                        <div class="scanning-progress" id="level1Progress"></div>
+                                    </div>
+                                </div>
+                                
+                                <div id="crushResult" class="result-card bg-white bg-opacity-20 rounded-3 p-4 mb-4 d-none">
+                                    <h4 class="text-warning">🎉 Match Found! 🎉</h4>
+                                    <p class="mb-0" id="crushMessage">Loading your secret admirer...</p>
+                                </div>
+                                
+                                <button id="level1NextBtn" class="btn btn-light btn-lg rounded-pill px-4 py-2 fw-bold d-none">
+                                    Next Level ➡️
+                                </button>
+                            </div>
+
+                            <!-- Level 2: Loyalty Test -->
+                            <div id="level2" class="level-content d-none">
+                                <h3 class="fw-bold mb-4"><i class="fas fa-balance-scale me-2"></i>Loyalty Test</h3>
+                                <p class="mb-4">Answer these crucial questions to calculate your loyalty percentage:</p>
+                                
+                                <div class="questions-container">
+                                    <div class="question-card mb-3">
+                                        <h5>1. How often do you check your partner's phone?</h5>
+                                        <div class="form-check mb-2">
+                                            <input class="form-check-input" type="radio" name="q1" id="q1a" value="never">
+                                            <label class="form-check-label" for="q1a">Never</label>
+                                        </div>
+                                        <div class="form-check mb-2">
+                                            <input class="form-check-input" type="radio" name="q1" id="q1b" value="sometimes">
+                                            <label class="form-check-label" for="q1b">Sometimes</label>
+                                        </div>
+                                        <div class="form-check mb-2">
+                                            <input class="form-check-input" type="radio" name="q1" id="q1c" value="always">
+                                            <label class="form-check-label" for="q1c">Always</label>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="question-card mb-3">
+                                        <h5>2. Your partner is going out with friends. You...</h5>
+                                        <div class="form-check mb-2">
+                                            <input class="form-check-input" type="radio" name="q2" id="q2a" value="trust">
+                                            <label class="form-check-label" for="q2a">Fully trust them</label>
+                                        </div>
+                                        <div class="form-check mb-2">
+                                            <input class="form-check-input" type="radio" name="q2" id="q2b" value="wonder">
+                                            <label class="form-check-label" for="q2b">Wonder who they're with</label>
+                                        </div>
+                                        <div class="form-check mb-2">
+                                            <input class="form-check-input" type="radio" name="q2" id="q2c" value="follow">
+                                            <label class="form-check-label" for="q2c">Follow them secretly</label>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="question-card mb-4">
+                                        <h5>3. You see an attractive person. Your reaction?</h5>
+                                        <div class="form-check mb-2">
+                                            <input class="form-check-input" type="radio" name="q3" id="q3a" value="ignore">
+                                            <label class="form-check-label" for="q3a">Completely ignore</label>
+                                        </div>
+                                        <div class="form-check mb-2">
+                                            <input class="form-check-input" type="radio" name="q3" id="q3b" value="glance">
+                                            <label class="form-check-label" for="q3b">Quick glance only</label>
+                                        </div>
+                                        <div class="form-check mb-2">
+                                            <input class="form-check-input" type="radio" name="q3" id="q3c" value="stare">
+                                            <label class="form-check-label" for="q3c">Stare for a while</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <button id="calculateLoyaltyBtn" class="btn btn-light btn-lg rounded-pill px-4 py-2 fw-bold">
+                                    Calculate Loyalty ➡️
+                                </button>
+                                
+                                <div id="loyaltyResult" class="result-card bg-white bg-opacity-20 rounded-3 p-4 mt-4 d-none">
+                                    <h4 class="text-warning">📊 Your Loyalty Score</h4>
+                                    <div class="loyalty-score-display">
+                                        <span class="fs-1 fw-bold" id="loyaltyPercentage">0%</span>
+                                        <p class="mb-0" id="loyaltyDescription">Calculating...</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Level 3: Marriage Prediction -->
+                            <div id="level3" class="level-content d-none">
+                                <h3 class="fw-bold mb-4"><i class="fas fa-ring me-2"></i>Marriage Prediction</h3>
+                                <p class="mb-4">Predicting your perfect life together:</p>
+                                
+                                <div class="prediction-cards row g-3">
+                                    <div class="col-md-6">
+                                        <div class="card h-100 bg-white bg-opacity-20 border-0">
+                                            <div class="card-body text-center">
+                                                <h5><i class="fas fa-calendar-alt text-warning"></i> Wedding Year</h5>
+                                                <p class="fs-2 fw-bold" id="weddingYear">2025</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card h-100 bg-white bg-opacity-20 border-0">
+                                            <div class="card-body text-center">
+                                                <h5><i class="fas fa-user text-warning"></i> Partner Type</h5>
+                                                <p class="fs-5" id="partnerType">Adventurous Soul</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card h-100 bg-white bg-opacity-20 border-0">
+                                            <div class="card-body text-center">
+                                                <h5><i class="fas fa-home text-warning"></i> Dream Home</h5>
+                                                <p class="fs-5" id="homeType">Beach Villa</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card h-100 bg-white bg-opacity-20 border-0">
+                                            <div class="card-body text-center">
+                                                <h5><i class="fas fa-baby text-warning"></i> Kids</h5>
+                                                <p class="fs-5" id="kidsCount">2</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <button id="predictNextBtn" class="btn btn-light btn-lg rounded-pill px-4 py-2 fw-bold mt-4">
+                                    See Future ➡️
+                                </button>
+                            </div>
+
+                            <!-- Level 4: Final Reality Check -->
+                            <div id="level4" class="level-content d-none">
+                                <h3 class="fw-bold mb-4"><i class="fas fa-eye text-warning me-2"></i>Final Reality Check</h3>
+                                <p class="mb-4">Calculating your ultimate romantic destiny...</p>
+                                
+                                <div class="final-loading text-center mb-4">
+                                    <div class="spinner-border text-warning" style="width: 3rem; height: 3rem;" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                </div>
+                                
+                                <div id="finalResult" class="result-card bg-white bg-opacity-20 rounded-3 p-4 d-none">
+                                    <h1 class="display-1 fw-bold text-warning mb-3 confetti-trigger">😎🔥</h1>
+                                    <h2 class="fw-bold text-warning mb-4">Still Single</h2>
+                                    <p class="lead mb-4">But that's totally fine! Being single is the best relationship status anyway! 💪</p>
+                                    
+                                    <div class="final-message mb-4">
+                                        <p>Congratulations <span id="finalUserName"></span>! You've completed the Ultimate Love Journey. Remember: Love comes and goes, but being awesome is forever! 🌟</p>
+                                    </div>
+                                    
+                                    <div class="action-buttons">
+                                        <button id="restartBtn" class="btn btn-light btn-lg rounded-pill px-4 py-2 me-2">
+                                            <i class="fas fa-redo me-2"></i>Restart Journey
+                                        </button>
+                                        <button id="shareBtn" class="btn btn-warning btn-lg rounded-pill px-4 py-2 ms-2">
+                                            <i class="fas fa-share me-2"></i>Share Result
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio Controls -->
+    <div class="audio-controls position-fixed bottom-0 end-0 m-3">
+        <button id="musicToggle" class="btn btn-outline-light rounded-circle p-2">
+            <i class="fas fa-music"></i>
+        </button>
+        <button id="soundToggle" class="btn btn-outline-light rounded-circle p-2 ms-2">
+            <i class="fas fa-volume-up"></i>
+        </button>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- html2canvas for screenshot -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
